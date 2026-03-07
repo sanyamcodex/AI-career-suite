@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+pandas
+numpy
+scikit-learn
+python-multipart
+openai
+pymongo
+motor
+requests
+pdfminer.six
+python-docx
