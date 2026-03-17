@@ -14,11 +14,11 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB Connection (CHANGE THIS)
-const MONGO_URI = "mongodb+srv://YOUR_ATLAS_URL"; // <-- yahan apna Mongo Atlas URL daal
+const MONGO_URI = "mongodb+srv://sanyamvats2112:sanyam2112@cluster0.zy1rs3f.mongodb.net/resumeAI?retryWrites=true&w=majority";
 
 mongoose.connect(MONGO_URI)
-.then(()=> console.log("MongoDB Connected"))
-.catch(err => console.log(err));
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log("Mongo Error:", err));
 
 // Routes
 app.use("/api/auth", authRoutes);
