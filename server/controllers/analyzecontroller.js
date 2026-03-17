@@ -61,7 +61,7 @@ exports.analyzeResume = async (req, res) => {
 
     console.log("5. before ML call");
 
-    const response = await axios.post("http://127.0.0.1:8000/api/upload", form, {
+    const response = await axios.post("https://sanyam-vats-21-ai-resume-analyzer.hf.space/api/upload", form, {
       headers: form.getHeaders(),
       maxBodyLength: Infinity,
       maxContentLength: Infinity,
