@@ -4,7 +4,7 @@ import html2pdf from 'html2pdf.js';
 import './ResumeUpload.css';
 
 const ResumeUpload = () => {
-  const API_BASE = useMemo(() => 'http://localhost:5000', []);
+  const API_BASE = useMemo(() => import.meta.env.VITE_API_URL, []);
 
   // --- STATES ---
   const [file, setFile] = useState(null);
