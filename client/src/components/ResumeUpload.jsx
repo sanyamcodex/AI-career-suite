@@ -5,7 +5,7 @@ import './ResumeUpload.css';
 
 const ResumeUpload = () => {
   const API_BASE = useMemo(() => import.meta.env.VITE_API_URL, []);
-
+  const HF_BASE = "https://sanyam-vats-21-ai-resume-analyzer.hf.space";
   // --- STATES ---
   const [file, setFile] = useState(null);
   const [jobDescription, setJobDescription] = useState('');
@@ -168,7 +168,7 @@ const fetchHistory = async () => {
 
   const fetchMockQuestions = async (roleKey) => {
     try {
-      const res = await axios.get('http://127.0.0.1:8000/api/mock/questions', { params: { role: roleKey } });
+      const res = await axios.get(`${HF_BASE}/api/mock/questions`, { params: { role: roleKey } });
       setMockQuestions(res.data.questions || []);
       setMockRole(res.data.role || roleKey);
       setSelectedQuestion(res.data.questions?.[0] || '');
@@ -185,7 +185,7 @@ const fetchHistory = async () => {
       const form = new FormData();
       form.append('question', selectedQuestion);
       form.append('answer', answerText);
-      const res = await axios.post('http://127.0.0.1:8000/api/mock/evaluate', form);
+      const res = await axios.post(`${HF_BASE}/api/mock/evaluate`, form);
       setAnswerResult(res.data);
     } catch (e) {
       setStatus('Evaluation failed.');
