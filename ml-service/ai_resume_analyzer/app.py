@@ -1,9 +1,9 @@
 from fastapi import FastAPI, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from resume_parser import extract_text_from_file
-from skill_extractor import extract_skills
-from info_extractor import extract_contact_info, generate_feedback
-from database import save_analysis, analysis_collection
+#from resume_parser import extract_text_from_file
+#from skill_extractor import extract_skills
+#from info_extractor import extract_contact_info, generate_feedback
+#from database import save_analysis, analysis_collection
 import datetime
 import os
 import inspect
@@ -33,6 +33,7 @@ app.add_middleware(
 
 @app.get("/api/history")
 async def get_history():
+    from database import analysis_collection
     try:
         history = []
         cursor = analysis_collection.find().sort("timestamp", -1).limit(10)
@@ -59,6 +60,10 @@ async def upload_resume(
     job_description: str = Form("")
 ):
     try:
+        from resume_parser import extract_text_from_file
+        from skill_extractor import extract_skills
+        from info_extractor import extract_contact_info, generate_feedback
+        from database import save_analysis
         print("1. upload endpoint hit")
         print("2. filename:", file.filename)
 
